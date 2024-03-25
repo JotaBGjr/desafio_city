@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Potência</title>
+</head>
+<body>
+    <script>
+        function calcularPotencia() {
+            let expressao = window.prompt("Digite a expressão separada por '+' (ex: 2^3+4^2+5^2):");
+            let numeros = expressao.split("+"); // Divide a string em uma lista de números
+            let resultado = 0;
+            
+            for (let i = 0; i < numeros.length; i++) {
+                let numero = numeros[i];
+                if (numero.length > 1) { // Ignora números com apenas 1 caractere
+                    let base = parseInt(numero.slice(0, -1)); // Todos os caracteres, exceto o último
+                    let potencia = parseInt(numero.slice(-1)); // Apenas o último caractere
+                    resultado += Math.pow(base, potencia);
+                }
+            }
+            
+            return resultado;
+        }
+
+        let resultado = calcularPotencia();
+        document.write("Resultado: " + resultado);
+    </script>
+</body>
+</html>
